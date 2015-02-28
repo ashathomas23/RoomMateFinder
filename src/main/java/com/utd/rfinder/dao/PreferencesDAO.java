@@ -32,9 +32,11 @@ public class PreferencesDAO {
 		
 		try {
 			lConnection = dataSource.getConnection();
+		
 			lPreparedStatement = lConnection.prepareStatement("select * from  preferences where preference_id=?");
 			lPreparedStatement.setInt(1, prefId);
 			lResultSet = lPreparedStatement.executeQuery();
+			
 			lResultSet.next();
 				UserPreference pref = new UserPreference();
 				pref.setPreferenceId(lResultSet.getInt("Preference_Id"));
